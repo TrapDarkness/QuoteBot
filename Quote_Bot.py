@@ -27,12 +27,15 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if '"' in message.content[0]:
+    if message.author == bot.user:
+        return
+    elif ('"'  in message.content[0]) or ('“'  in message.content[0]) or ('”' in message.content[0]):
         guild = message.guild.name
         date_time = str(message.created_at)
         quote = message.content.split(" ")
         author_name = str(quote[-1])
         windows_file_author_name = author_name.strip('<')
+        windows_file_author_name = windows_file_author_name.replace("!", "")
         windows_file_author_name = windows_file_author_name.strip('>')
         # Parent Directories  
         parent_dir = "c:/Users/Dashan/OneDrive/ALS_Laptop/Documents/Programming/Discord_Bots/QuoteBot/Quote_Lists/"
@@ -78,6 +81,8 @@ async def game_list(ctx, quote = "None", user = "None"):
 
     author_name = str(user)
     windows_file_author_name = author_name.strip('<')
+    windows_file_author_name = windows_file_author_name.replace('!', '')
+
     windows_file_author_name = windows_file_author_name.strip('>')
     guild = ctx.message.guild.name
     date_time = str(ctx.message.created_at)
@@ -112,6 +117,7 @@ async def game_list(ctx, user = "None"):
 
     author_name = str(user)
     windows_file_author_name = author_name.strip('<')
+    windows_file_author_name = windows_file_author_name.replace('!', '')
     windows_file_author_name = windows_file_author_name.strip('>')
     guild = ctx.message.guild.name
     file_length = 0
@@ -216,7 +222,7 @@ async def game_list(ctx):
 
 @bot.command(name='tally_user', help='Counts up all the quotes for each user')
 async def game_list(ctx, author):
-
+    author = author.strip('!')
     guild = ctx.message.guild.name
     file_length = 0
         
