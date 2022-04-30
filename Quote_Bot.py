@@ -16,7 +16,8 @@ import sched
 from discord.ext import commands
 
 #load_dotenv()
-TOKEN = "INSERT_TOKEN_HERE"     
+TOKEN = "INSERT_TOKEN_HERE" 
+
 # 2
 bot = commands.Bot(command_prefix='q!')
 #Testing 1, 2, 3, 4
